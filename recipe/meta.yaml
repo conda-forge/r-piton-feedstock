@@ -1,4 +1,4 @@
-{% set version = '0.1.1' %}
+{% set version = "0.1.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,16 +7,14 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: piton_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/piton_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/piton/piton_{{ version }}.tar.gz
   sha256: 993266f43f565555698b2d439de0eb77c7cafb9450e92260e6b654b129f1c588
 
 build:
-  merge_build_host: True  # [win]
-  number: 1003
-  skip: true  # [win32]
+  merge_build_host: true  # [win]
+  number: 1004
   rpaths:
     - lib/R/lib/
     - lib/
@@ -27,17 +25,17 @@ requirements:
     - {{ compiler('cxx') }}      # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('m2w64_cxx') }}        # [win]
-    - {{posix}}filesystem        # [win]
-    - {{posix}}make
-    - {{posix}}sed               # [win]
-    - {{posix}}coreutils         # [win]
-    - {{posix}}zip               # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
   host:
     - r-base
     - r-rcpp
   run:
     - r-base
-    - {{native}}gcc-libs         # [win]
+    - {{ native }}gcc-libs         # [win]
     - r-rcpp
 
 test:
@@ -48,18 +46,12 @@ test:
 about:
   home: https://www.github.com/Ironholds/piton
   license: MIT
-  summary: A wrapper around the 'Parsing Expression Grammar Template Library', a C++11 library
-    for generating Parsing Expression Grammars, that makes it accessible within Rcpp.
-    With this, developers can implement their own grammars and easily expose them in
-    R packages.
+  summary: A wrapper around the 'Parsing Expression Grammar Template Library', a C++11 library for generating Parsing Expression Grammars, that makes it accessible within Rcpp. With this, developers can implement their own grammars and easily expose them in R packages.
   license_family: MIT
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
