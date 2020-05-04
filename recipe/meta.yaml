@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: piton_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/piton_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/piton/piton_{{ version }}.tar.gz
@@ -16,7 +15,6 @@ source:
 build:
   merge_build_host: true  # [win]
   number: 1004
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -50,16 +48,10 @@ about:
   license: MIT
   summary: A wrapper around the 'Parsing Expression Grammar Template Library', a C++11 library for generating Parsing Expression Grammars, that makes it accessible within Rcpp. With this, developers can implement their own grammars and easily expose them in R packages.
   license_family: MIT
-
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
     - LICENSE
+
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
