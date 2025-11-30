@@ -1,4 +1,4 @@
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/piton_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/piton/piton_{{ version }}.tar.gz
-  sha256: 28abe2cba795828ae76d29bc29f45bb9098fb657fe52d96d39a2a221e2372ecf
+  sha256: 3f705d10c20e7c9e9ac82f54e02cf251a04a66db17303a6087a8a162a16b7f33
 
 build:
-  number: 4
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
